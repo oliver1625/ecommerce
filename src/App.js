@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from "react";
 import './App.css';
+import ProductsList from './components/ProductsList';
+import store from "./redux/store";
+import {getProducts} from "./redux/action";
+import { useDispatch, useSelector } from 'react-redux'
+import Sidebar from "./components/Sidebar";
 
 function App() {
+
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product)
+
+  const [productList, setProductList] = useState([]);
+
+  const [selectedCategory, setSelectedCategory] = useState();
+  
+  useEffect(() => {
+    dispatch(getProducts())
+    setProductList(products)
+  }, [dispatch])
+
+  function handleCategoryChange(event) {
+    setSelectedCategory(event.target.value);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="">
+        <nav>
+        <p>Ecommerce</p>
+        <div className="cart">
+          <i className="fa-solid fa-cart-shopping"></i>
+          <span>1</span>
+        </div>
+        </nav>
       </header>
+      <main>
+        <div className="main-wrapper">
+        <Sidebar handleCategoryChange={handleCategoryChange} />
+        <ProductsList />
+        </div>
+      </main>
     </div>
   );
 }
-
 export default App;
