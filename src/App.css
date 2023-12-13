@@ -10,29 +10,28 @@ body{
   font-family: 'Poppins', sans-serif !important;
 }
 header{
+  min-height: 7vh;
   background-color: white;
-  margin-bottom: 2rem;
 }
-nav{
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  font-size: 1.5rem;
-}
+
 main{
   /* margin-top: 1rem; */
   /* background-color: lightgray; */
 }
 .main-wrapper{
+  width: 80%;
+  margin: 3rem auto;
+}
+/* .product-list{
   margin: auto;
   width: 85%;
   display: flex;
-}
+} */
 .product{
-  width: 80%;
+  /* width: 80%;
+  margin: auto; */
+}
+nav{
 }
 .sidebar{
   width: 20%;
@@ -40,67 +39,13 @@ main{
   /* margin-right: 1rem; */
   padding: 1rem;
 }
-.product-list{
-  display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: white;
-  padding: 10px;
-}
-.product-card{
-  border: 1px solid lightgray;
-  padding: 20px;
-  margin: 1rem;
-  font-size: 30px;
-  text-align: center;
-  border-radius: 20px;
-  height: 25rem;
-  position: relative;
-  cursor: pointer;
-}
-.product-card .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: 20px;
-  top: 0;
-  /* background: rgba(0, 0, 0, 0.8); */
-  -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.5);
-  color: #f1f1f1;
+.home-image{
+  max-height: 90vh;
   width: 100%;
-  transition: .5s ease;
-  opacity:0;
-  /* color: white; */
-  font-size: 2rem;
-  padding: 1rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.product-card:hover .overlay {
-  opacity: 1;
-  color: black;
-  border-radius: 20px;
-}
-.product-card .image{
-  height: 10rem;
-  width: 80%;
-  margin: 1rem auto;
-  position: s;
-}
-.product-card .image img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.card-header p{
-  font-size: 1.5rem;
-}
-.price{
-  font-size: 1.2rem;
-}
+
+
+
 .add-cart{
   background: black;
   color: white;
@@ -111,14 +56,4 @@ main{
   font-size: 1.3rem;
   z-index: 99;
   cursor: pointer;
-}
-.blink_me {
-  animation: blinker 1s linear infinite;
-  font-size: 1.5rem;
-}
-
-@keyframes blinker {
-  90% {
-    opacity: 0;
-  }
 }

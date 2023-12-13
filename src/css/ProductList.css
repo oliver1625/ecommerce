@@ -1,0 +1,6 @@
+.product-list{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: white;
+  /* padding: 10px; */
+}
