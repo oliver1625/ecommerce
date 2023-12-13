@@ -1,46 +1,27 @@
 import React, {useEffect, useState} from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import './App.css';
-import ProductsList from './components/ProductsList';
-import store from "./redux/store";
-import {getProducts} from "./redux/action";
-import { useDispatch, useSelector } from 'react-redux'
-import Sidebar from "./components/Sidebar";
+import Navbar from "./components/NavBar";
+import Home from "./components/Home";
+import ProductsList from "./components/ProductsList"
+import SpecificCategoryPage from "./components/SpecificCategoryPage";
+import Product from "./components/Product";
 
 function App() {
 
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.product)
-
-  const [productList, setProductList] = useState([]);
-
-  const [selectedCategory, setSelectedCategory] = useState();
-  
-  useEffect(() => {
-    dispatch(getProducts())
-    setProductList(products)
-  }, [dispatch])
-
-  function handleCategoryChange(event) {
-    setSelectedCategory(event.target.value);
-  }
   return (
-    <div className="App">
-      <header className="">
-        <nav>
-        <p>Ecommerce</p>
-        <div className="cart">
-          <i className="fa-solid fa-cart-shopping"></i>
-          <span>1</span>
-        </div>
-        </nav>
-      </header>
-      <main>
-        <div className="main-wrapper">
-        <Sidebar handleCategoryChange={handleCategoryChange} />
-        <ProductsList />
-        </div>
-      </main>
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/product-list" element={<ProductsList />} />
+          <Route path="/category-page/:name" element={<SpecificCategoryPage />} />
+          <Route path="/product" element={<Product />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 export default App;
